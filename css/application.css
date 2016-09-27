@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(66, 66, 66, 0.2);
+  width: 100%; }
+
+.heatmap-chart {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: center; }
+
+.chart {
+  background-color: #eee; }
+
+/*# sourceMappingURL=application.css.map */

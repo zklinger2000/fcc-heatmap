@@ -1,0 +1,67 @@
+$black      : #111;
+$white      : #eee;
+$dark-grey  : #424242;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba($dark-grey, 0.2);
+  width: 100%;
+}
+.heatmap-chart {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: center;
+}
+.chart {
+  background-color: $white;
+}
+//.chart rect {
+//  fill: steelblue;
+//}
+//
+//.chart text {
+//  fill: white;
+//  font: 20px sans-serif;
+//  text-anchor: end;
+//}
+//.chart text.name {
+//   fill: black;
+//   font: 10px sans-serif;
+//   text-anchor: start;
+// }
+//text.name:hover {
+//  cursor: default;
+//  fill: white;
+//}
+//div.tooltip {
+//  position: absolute;
+//  text-align: center;
+//  width: 400px;
+//  //height: 4em;
+//  padding: 30px;
+//  font: 22px sans-serif;
+//  background: lightsteelblue;
+//  border: 0;
+//  border-radius: 8px;
+//  pointer-events: none;
+//  display: flex;
+//  //flex-direction: column;
+//  flex-wrap: wrap;
+//  justify-content: space-around;
+//  > * {
+//    flex: 1 0 120px;
+//    text-align: right;
+//  }
+//  > *:nth-child(n+7) {
+//    color: red;
+//    flex: 1 0 100%;
+//    text-align: left;
+//  }
+//  label {
+//    font-size: 18px;
+//  }
+//  > div:first-child {
+//    font-weight: bold;
+//  }
+//}
