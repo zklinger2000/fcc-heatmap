@@ -70,7 +70,22 @@ function buildHeatmap() {
         // .attr('ry', 4)
         .attr('width', gridWidth)
         .attr('height', gridHeight + 3)
-        .style('fill', function(d) { return colorScale(d.variance); });
+        .style('fill', function(d) { return colorScale(d.variance); })
+        .on('mouseover', function(d) {
+          div.transition()
+            .duration(200)
+            .style('opacity', .9);
+          div.html('<div>' + d.year + ' - ' + months[d.month] + '</div>' +
+          '<div>' + (data.baseTemperature + d.variance).toFixed(2) + ' C</div>' +
+          '<div>' + (d.variance).toFixed(2) + ' C</div>')
+            .style('left', (yearsScale(d.year) + margin.left + 50) + 'px')
+            .style('top', (monthsScale(d.month) + margin.top + 50) + 'px');
+        })
+        .on('mouseout', function(d) {
+          div.transition()
+            .duration(500)
+            .style('opacity', 0);
+        });
 
       var monthLabels = svg.selectAll('.monthLabel')
         .data(months)
