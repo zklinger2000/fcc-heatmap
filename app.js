@@ -16,7 +16,8 @@ function buildHeatmap() {
         height = 540 - margin.top - margin.bottom,
         gridWidth = width / Math.ceil(data.monthlyVariance.length / 12),
         gridHeight = Math.floor(height / 12),
-        colors = ["#1010FF", "#202F9C", "#165693", "#F2BF41","#CA760C","#CA470C", "#FF470A"], // alternatively colorbrewer.YlGnBu[9]
+        legendElementWidth = 30,
+        colors = ["#5d50a2", "#3387bd", "#66c3a8", "#aadea6", "#e8f598", "#fdffc4", "#ffdf8d", "#fbaf62","#f36c48","#d43d4e", "#9c0244"], // alternatively colorbrewer.YlGnBu[9]
         months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
       // Create a hidden tooltip element
@@ -85,6 +86,26 @@ function buildHeatmap() {
         .call(d3.axisBottom(yearsScale).tickFormat(d3.format(' ')))
         .attr('class', 'axis')
         .attr('transform', 'translate(0, ' + (height + gridHeight + 3) + ')');
+
+      var legend = svg.selectAll(".legend")
+        .data([0].concat(colorScale.quantiles()), function(d) { return d; });
+
+      legend.enter().append("g")
+        .attr("class", "legend")
+        .append("rect")
+        .attr("x", function(d, i) { return legendElementWidth * i + width / 2; })
+        .attr("y", height + (margin.top))
+        .attr("width", legendElementWidth)
+        .attr("height", gridHeight / 2)
+        .style("fill", function(d, i) { return colors[i]; });
+
+      legend.enter().append('text')
+        // .append("text")
+        .text(function(d, i) { return (i * (maxVariance - minVariance) / 10).toFixed(1); })
+        .attr("x", function(d, i) { return legendElementWidth * i + width / 2; })
+        .attr("y", gridHeight + height + margin.top);
+
+      legend.exit().remove();
 
     });
 }
