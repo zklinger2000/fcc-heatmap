@@ -71,6 +71,16 @@ function buildHeatmap() {
         .attr('height', gridHeight + 3)
         .style('fill', function(d) { return colorScale(d.variance); });
 
+      var monthLabels = svg.selectAll('.monthLabel')
+        .data(months)
+        .enter()
+        .append('text')
+          .text(function(d) { return d; })
+          .attr('x', 0)
+          .attr('y', function(d, i) { return monthsScale(i + 1)})
+          .style('text-anchor', 'end')
+          .attr('transform', 'translate(-10, ' + (3 * gridHeight / 4) + ')');
+
     });
 }
 
