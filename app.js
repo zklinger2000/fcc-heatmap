@@ -81,6 +81,11 @@ function buildHeatmap() {
           .style('text-anchor', 'end')
           .attr('transform', 'translate(-10, ' + (3 * gridHeight / 4) + ')');
 
+      var xAxis = svg.append('g')
+        .call(d3.axisBottom(yearsScale).tickFormat(d3.format(' ')))
+        .attr('class', 'axis')
+        .attr('transform', 'translate(0, ' + (height + gridHeight + 3) + ')');
+
     });
 }
 
@@ -103,7 +108,7 @@ class Chart extends Component {
       <div className="heatmap-chart">
         <h1 className="heatmap-title"></h1>
         <p className="heatmap-info"></p>
-        <svg className="chart"></svg>
+        <svg className="chart" width={960} height={540}></svg>
       </div>
     );
   }
